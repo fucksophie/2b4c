@@ -1,0 +1,6 @@
+worlds:
+   world:
+      minecraft:red_wool:
+         - "234,97,217"
+      minecraft:blue_wool:
+         - "235,96,96"
