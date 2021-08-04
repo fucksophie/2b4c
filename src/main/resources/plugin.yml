@@ -1,0 +1,6 @@
+name: 2b4cCore
+main: twobeefourcee.core.Core
+version: 1.0.0
+commands:
+   update:
+      default: op

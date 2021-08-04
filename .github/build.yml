@@ -1,0 +1,29 @@
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 15
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'zulu'
+        java-version: '15'
+  
+    - name: Build with Maven
+      run: mvn clean package
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: 2b4cCore
+        path: target/core-1.0.0-2b4c.jar
