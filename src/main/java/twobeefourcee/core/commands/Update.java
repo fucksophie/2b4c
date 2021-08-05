@@ -12,6 +12,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+import twobeefourcee.core.Core;
 import twobeefourcee.core.UnzipUtility;
 
 public class Update implements CommandExecutor {
@@ -21,11 +22,11 @@ public class Update implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (sender.isOp()) {
 			try {
-				Bukkit.broadcastMessage("Started updating.");
+				sender.sendMessage(Core.success + "Started updating.");
 
 				if (download("https://nightly.link/yourfriendoss/2b4c/workflows/build/main/2b4cCore.zip",
 						"2b4cCoreUPDATE.zip") != 0) {
-					Bukkit.broadcastMessage("Zip downloaded.");
+					sender.sendMessage(Core.info + "Zip downloaded.");
 
 					try {
 						unzipper.unzip("2b4cCoreUPDATE.zip", "plugins/");
@@ -33,20 +34,22 @@ public class Update implements CommandExecutor {
 
 						zip.delete();
 
-						Bukkit.broadcastMessage("Zip unpacked.");
-
+						sender.sendMessage(Core.info + "Zip unpacked.");
+						
+						Bukkit.broadcastMessage(Core.info + "This server is restarting for a update.");
+						
 						System.gc();
 						Bukkit.reload();
 
-						Bukkit.broadcastMessage("I've attempted reloading the server. Update succeeded.");
+						sender.sendMessage(Core.success + "I've attempted reloading the server. Update succeeded.");
 
 					} catch (Exception ex) {
-						Bukkit.broadcastMessage("Zip failed unpacking ");
+						sender.sendMessage(Core.error + "Zip failed unpacking ");
 						ex.printStackTrace();
 					}
 
 				} else {
-					Bukkit.broadcastMessage("Download failed.");
+					sender.sendMessage(Core.error + "Download failed.");
 				}
 
 			} catch (Exception e) {

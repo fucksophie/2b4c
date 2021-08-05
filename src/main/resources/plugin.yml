@@ -5,3 +5,5 @@ version: 1.0.0
 commands:
    update:
       default: op
+   reloadconfig:
+      default: op

@@ -16,19 +16,44 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import net.md_5.bungee.api.ChatColor;
+import twobeefourcee.core.commands.ReloadConfig;
 import twobeefourcee.core.commands.Update;
 
 public class Core extends JavaPlugin {
-HashMap<Location, Material> locations = new HashMap<Location, Material>();
+	static HashMap<Location, Material> locations = new HashMap<Location, Material>();
 
 	FileConfiguration config = this.getConfig();
-
+	
+	public static String success = ChatColor.translateAlternateColorCodes('&', "&8[&a2b4c&8]&7 ");
+	public static String error = ChatColor.translateAlternateColorCodes('&', "&8[&c2b4c&8]&7 ");
+	public static String info = ChatColor.translateAlternateColorCodes('&', "&8[&72b4c&8]&7 ");
+	
 	@Override
 	public void onEnable() {
-		
+
 		this.saveDefaultConfig();
+	
+		loadLocations();
 		
-		Map<String, Object> worlds = this.getConfig().getConfigurationSection("worlds").getValues(false);
+		this.getCommand("update").setExecutor(new Update());
+		this.getCommand("reloadconfig").setExecutor(new ReloadConfig());
+
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
+			public void run() {
+				locations.forEach((loc, mt) -> {
+					loc.getWorld().dropItemNaturally(loc, new ItemStack(mt));
+				});
+				
+			}
+		}, 0L, 4);
+		
+		System.out.println("[2b4cCore] Enabled sucessfully!");
+	}
+	
+	public void loadLocations() {
+		Core.locations = new HashMap<Location, Material>();
+		Map<String, Object> worlds = getConfig().getConfigurationSection("worlds").getValues(false);
 
 		worlds.forEach((world, section) -> {
 			World wworld = Bukkit.getWorld(world);
@@ -53,26 +78,12 @@ HashMap<Location, Material> locations = new HashMap<Location, Material>();
 						if(mmaterial == null) {
 							System.out.println("Could not find " + material + " material!");
 						} else {
-							this.locations.put(lllocation, mmaterial);
-							System.out.println(lllocation);
-							System.out.println(mmaterial);
+							Core.locations.put(lllocation, mmaterial);
 						}
 					});
 				});
 			}
 		});
-
-		this.getCommand("update").setExecutor(new Update());
-
-		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
-			public void run() {
-				locations.forEach((loc, mt) -> {
-					System.out.println(loc);
-					loc.getWorld().dropItemNaturally(loc, new ItemStack(mt));
-				});
-				
-			}
-		}, 0L, 3);
 	}
 	
 	public Material lookupMaterial(String s) {
@@ -86,8 +97,10 @@ HashMap<Location, Material> locations = new HashMap<Location, Material>();
             return null;
         }
     }
+	
+	
 	@Override
 	public void onDisable() {
-		System.out.println(";( bye");
+		System.out.println("[2b4cCore] Disabled.");
 	}
 }
