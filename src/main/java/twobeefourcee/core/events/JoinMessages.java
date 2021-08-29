@@ -13,7 +13,7 @@ public class JoinMessages implements Listener {
     @EventHandler
     public void joinEvent(PlayerJoinEvent event) {
     	Player player = event.getPlayer();
-    	
+    
     	event.setJoinMessage(Core.success + player.getName() + " joined.");
     }
     

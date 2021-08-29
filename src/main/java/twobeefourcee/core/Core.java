@@ -1,6 +1,7 @@
 
 package twobeefourcee.core;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Logger;
 
@@ -8,6 +9,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import org.bukkit.command.CommandExecutor;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -22,6 +24,9 @@ public class Core extends JavaPlugin {
     private Logger log = this.getLogger();
     private PluginManager pm = mc.getPluginManager();
 
+    public static File homesFile = new File("plugins/2b4cCore/Homes.yml");
+    public static YamlConfiguration homes = YamlConfiguration.loadConfiguration(homesFile);
+    
 	@Override
 	public void onEnable() {
 		Reflections commandReflections = new Reflections("twobeefourcee.core.commands");

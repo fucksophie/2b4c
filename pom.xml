@@ -27,6 +27,11 @@
 			<artifactId>reflections</artifactId>
 			<version>0.9.12</version>
 		</dependency>
+		<dependency>
+  <groupId>io.jsondb</groupId>
+  <artifactId>jsondb-core</artifactId>
+  <version>1.0.106</version>
+</dependency>
 </dependencies>
   	<build>
 	  <resources>

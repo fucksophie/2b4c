@@ -5,3 +5,9 @@ version: 2.0.0
 commands:
    update:
       default: op
+   sethome:
+      default: true
+   home: 
+      default: true
+   delhome: 
+      default: true

@@ -38,7 +38,6 @@ public class Update implements CommandExecutor {
 						
 						Bukkit.broadcastMessage(Core.info + "This server is restarting for a update.");
 						
-						System.gc();
 						Bukkit.reload();
 
 						sender.sendMessage(Core.success + "I've attempted reloading the server. Update succeeded.");
