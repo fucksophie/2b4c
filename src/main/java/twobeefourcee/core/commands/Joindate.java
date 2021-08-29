@@ -16,7 +16,7 @@ import org.bukkit.entity.Player;
 import twobeefourcee.core.Core;
 
 
-public class Jd implements CommandExecutor {
+public class Joindate implements CommandExecutor {
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if(args.length == 1) {
@@ -30,6 +30,16 @@ public class Jd implements CommandExecutor {
 				sender.sendMessage(Core.success + "Player " + player.getName() + " joined " + formatter.format(Instant.ofEpochSecond(time)));
 			} else {
 				sender.sendMessage(Core.error + "Player is not online.");
+			}
+		} else {
+			if(sender instanceof Player) {
+				long time = Core.database.getLong(((Player) sender).getUniqueId().toString() + ".joinDate");
+				DateTimeFormatter formatter = DateTimeFormatter
+						.ofLocalizedDateTime(FormatStyle.SHORT)
+						.withZone(ZoneId.from(ZoneOffset.UTC));
+				
+				sender.sendMessage(Core.success + "You joined " + formatter.format(Instant.ofEpochSecond(time)));
+
 			}
 		}
 

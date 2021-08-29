@@ -11,5 +11,6 @@ commands:
       default: true
    delhome: 
       default: true
-   jd:
+   joindate:
+      aliases: ["jd"]
       default: true
