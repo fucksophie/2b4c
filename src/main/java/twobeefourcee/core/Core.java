@@ -24,8 +24,8 @@ public class Core extends JavaPlugin {
     private Logger log = this.getLogger();
     private PluginManager pm = mc.getPluginManager();
 
-    public static File homesFile = new File("plugins/2b4cCore/Homes.yml");
-    public static YamlConfiguration homes = YamlConfiguration.loadConfiguration(homesFile);
+    public static File databaseFile = new File("plugins/2b4cCore/db.yml");
+    public static YamlConfiguration database = YamlConfiguration.loadConfiguration(databaseFile);
     
 	@Override
 	public void onEnable() {

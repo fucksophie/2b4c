@@ -18,14 +18,14 @@ public class Home implements CommandExecutor {
 		if(sender instanceof Player){
 			Player player = (Player) sender;
 			
-			if(Core.homes.contains("homes." + player.getUniqueId().toString() + ".X")) {
-				double x = Core.homes.getDouble("homes." + player.getUniqueId().toString() + ".X");
-				double y = Core.homes.getDouble("homes." + player.getUniqueId().toString() + ".Y");
-				double z = Core.homes.getDouble("homes." + player.getUniqueId().toString() + ".Z");
-				float yaw = (float) Core.homes.getLong("homes." + player.getUniqueId().toString() +  ".yaw");
-				float pitch = (float) Core.homes.getLong("homes." + player.getUniqueId().toString() + ".pitch");
+			if(Core.database.contains(player.getUniqueId().toString() + ".home.X")) {
+				double x = Core.database.getDouble(player.getUniqueId().toString() + ".home.X");
+				double y = Core.database.getDouble(player.getUniqueId().toString() + ".home.Y");
+				double z = Core.database.getDouble(player.getUniqueId().toString() + ".home.Z");
+				float yaw = (float) Core.database.getLong(player.getUniqueId().toString() +  ".home.yaw");
+				float pitch = (float) Core.database.getLong(player.getUniqueId().toString() + ".home.pitch");
 
-				World world = Bukkit.getWorld(Core.homes.getString("homes." + player.getUniqueId().toString() + ".world"));
+				World world = Bukkit.getWorld(Core.database.getString(player.getUniqueId().toString() + ".home.world"));
 				
 				Location home = new Location(world, x, y, z, yaw, pitch);
 				

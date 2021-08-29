@@ -20,15 +20,15 @@ public class SetHome implements CommandExecutor {
 			
 			Location location = player.getLocation();
 			
-			Core.homes.set("homes." + player.getUniqueId().toString() + ".X", location.getX());
-			Core.homes.set("homes." + player.getUniqueId().toString() + ".Y", location.getY());
-			Core.homes.set("homes." + player.getUniqueId().toString() + ".Z", location.getZ());
-			Core.homes.set("homes." + player.getUniqueId().toString() + ".yaw", location.getYaw());
-			Core.homes.set("homes." + player.getUniqueId().toString() + ".pitch", location.getPitch());
-			Core.homes.set("homes." + player.getUniqueId().toString() + ".world", player.getWorld().getName());
+			Core.database.set(player.getUniqueId().toString() + ".home.X", location.getX());
+			Core.database.set(player.getUniqueId().toString() + ".home.Y", location.getY());
+			Core.database.set(player.getUniqueId().toString() + ".home.Z", location.getZ());
+			Core.database.set(player.getUniqueId().toString() + ".home.yaw", location.getYaw());
+			Core.database.set(player.getUniqueId().toString() + ".home.pitch", location.getPitch());
+			Core.database.set(player.getUniqueId().toString() + ".home.world", player.getWorld().getName());
 				
 			try {
-				Core.homes.save(Core.homesFile);
+				Core.database.save(Core.databaseFile);
 				sender.sendMessage(Core.success + "Home set.");
 			} catch (IOException e) {
 				e.printStackTrace();

@@ -17,10 +17,10 @@ public class DelHome implements CommandExecutor {
 		if(sender instanceof Player){
 			Player player = (Player) sender;
 						
-			Core.homes.set("homes." + player.getUniqueId().toString(), null);
+			Core.database.set(player.getUniqueId().toString() + ".home", null);
 				
 			try {
-				Core.homes.save(Core.homesFile);
+				Core.database.save(Core.databaseFile);
 				sender.sendMessage(Core.success + "Home deleted.");
 			} catch (IOException e) {
 				e.printStackTrace();
