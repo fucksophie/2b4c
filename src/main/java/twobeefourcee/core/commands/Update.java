@@ -22,9 +22,9 @@ public class Update implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (sender.isOp()) {
 			try {
-				sender.sendMessage(Core.success + "Started updating.");
+				sender.sendMessage(Core.info + "Started updating.");
 
-				if (download("https://nightly.link/yourfriendoss/2b4c/workflows/build/main/2b4cCore.zip",
+				if (download("https://nightly.link/yourfriendoss/2b4c/workflows/build/main/2b4cCore.zip?status=completed",
 						"2b4cCoreUPDATE.zip") != 0) {
 					sender.sendMessage(Core.info + "Zip downloaded.");
 

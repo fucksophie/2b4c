@@ -1,9 +1,7 @@
 name: 2b4cCore
 main: twobeefourcee.core.Core
 api-version: 1.13
-version: 1.0.0
+version: 2.0.0
 commands:
    update:
-      default: op
-   reloadconfig:
       default: op
