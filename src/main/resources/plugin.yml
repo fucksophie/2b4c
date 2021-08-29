@@ -11,3 +11,5 @@ commands:
       default: true
    delhome: 
       default: true
+   jd:
+      default: true
