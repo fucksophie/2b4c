@@ -36,12 +36,7 @@ public class Update implements CommandExecutor {
 
 						sender.sendMessage(Core.info + "Zip unpacked.");
 						
-						Bukkit.broadcastMessage(Core.info + "This server is restarting for a update.");
-						
-						Bukkit.reload();
-
-						sender.sendMessage(Core.success + "I've attempted reloading the server. Update succeeded.");
-
+						Bukkit.broadcastMessage(Core.info + "2b4cCore has downloaded a new update.");
 					} catch (Exception ex) {
 						sender.sendMessage(Core.error + "Zip failed unpacking ");
 						ex.printStackTrace();
