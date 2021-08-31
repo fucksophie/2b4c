@@ -20,11 +20,11 @@ public class FuckYourFlight implements Listener {
     	LivingEntity le = (LivingEntity) player;
     	double distance = event.getFrom().distance(event.getTo());
     	
-    	if(distance > 1.7 && !le.isOnGround()) {
-    		sendActionBar(player, Core.error + "You are flying too quick. " + String.format("%.2f", distance) + "/1.7");
+    	if(distance > 1.6 && !le.isOnGround()) {
+    		sendActionBar(player, Core.error + "You are flying too quick. " + String.format("%.2f", distance) + "/1.6");
     		event.setCancelled(true);
     	} else {
-    		sendActionBar(player, Core.success + String.format("%.2f", distance) + "/1.7");
+    		sendActionBar(player, Core.success + String.format("%.2f", distance) + "/1.6" + le.isOnGround());
     	}
     }
         
