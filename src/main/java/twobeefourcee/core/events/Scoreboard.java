@@ -30,7 +30,7 @@ public class Scoreboard implements Listener {
     	    	
     	    	board.set("", 1);
     	    	
-    	    	board.set(ChatColor.translateAlternateColorCodes('&', "&cdiscord.gg/zXyQ7WsyJp"), 0);
+    	    	board.set(ChatColor.translateAlternateColorCodes('&', "&cdiscord.gg/&lzXyQ7WsyJp"), 0);
     	    	
     	    	Bukkit.getOnlinePlayers().forEach(playerr -> {
     	    		if(player != playerr) {
