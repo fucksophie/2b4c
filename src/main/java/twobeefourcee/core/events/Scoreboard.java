@@ -22,11 +22,11 @@ public class Scoreboard implements Listener {
     	Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.getPlugin(Core.class), new Runnable() {
     		public void run() {
     	    	BPlayerBoard board = Netherboard.instance().createBoard(player, Core.error);
-    	    	 
-    	    	double days = player.getStatistic(Statistic.PLAY_ONE_MINUTE) / 20 / 86400;
-    	    	
+    
+    	    	double days = ((double)player.getStatistic(Statistic.PLAY_ONE_MINUTE)) / 20 / 86400;
+    	    	    	    	
     	    	board.set(ChatColor.translateAlternateColorCodes('&', "&cPlaytime: &l" + String.format("%.2f", days) + "d"), 2);
-    	    	board.set(ChatColor.translateAlternateColorCodes('&', "&cTotal Players: &l" + Bukkit.getOnlinePlayers().size()), 3);
+    	    	board.set(ChatColor.translateAlternateColorCodes('&', "&cOnline: &l" + Bukkit.getOnlinePlayers().size()), 3);
     	    	
     	    	board.set("", 1);
     	    	
@@ -36,7 +36,7 @@ public class Scoreboard implements Listener {
     	    		if(player != playerr) {
     	    			BPlayerBoard bboard = Netherboard.instance().getBoard(playerr);
     	    	    	
-    	    			bboard.set(ChatColor.translateAlternateColorCodes('&', "&cThere are &l" + Bukkit.getOnlinePlayers().size() + " players online."), 3);
+    	    			bboard.set(ChatColor.translateAlternateColorCodes('&', "&cTotal Players: &l" + Bukkit.getOnlinePlayers().size()), 3);
 
     	    		};
     	    	});
