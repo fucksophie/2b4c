@@ -24,7 +24,7 @@ public class FuckYourFlight implements Listener {
     		sendActionBar(player, Core.error + "You are flying too quick. " + String.format("%.2f", distance) + "/1.6");
     		event.setCancelled(true);
     	} else {
-    		sendActionBar(player, Core.success + String.format("%.2f", distance) + "/1.6" + le.isOnGround());
+    		sendActionBar(player, Core.success + String.format("%.2f", distance) + "/1.6 " + le.isOnGround());
     	}
     }
         
