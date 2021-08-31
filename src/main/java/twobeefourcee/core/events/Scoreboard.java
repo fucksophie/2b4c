@@ -25,12 +25,13 @@ public class Scoreboard implements Listener {
     	    	 
     	    	int seconds = player.getStatistic(Statistic.PLAY_ONE_MINUTE) / 20;
     	    	
-    	    	board.set(ChatColor.translateAlternateColorCodes('&', "&cYou have played for &l" + seconds/86400 + "d, " + seconds%86400/3600 + "h."), 2);
-    	    	board.set(ChatColor.translateAlternateColorCodes('&', "&cThere are &l" + Bukkit.getOnlinePlayers().size() + " players online."), 3);
+    	    	board.set(ChatColor.translateAlternateColorCodes('&', "&cPlaytime:" + seconds%86400/3600 + "d"), 2);
+    	    	board.set(ChatColor.translateAlternateColorCodes('&', "&cTotal Players: &l" + Bukkit.getOnlinePlayers().size()), 3);
     	    	
     	    	board.set("", 1);
     	    	
-    	    	board.set(ChatColor.translateAlternateColorCodes('&', "&cdiscord.gg/&4zXyQ7WsyJp"), 0);
+    	    	board.set(ChatColor.translateAlternateColorCodes('&', "&cdiscord.gg/zXyQ7WsyJp"), 0);
+    	    	
     	    	Bukkit.getOnlinePlayers().forEach(playerr -> {
     	    		if(player != playerr) {
     	    			BPlayerBoard bboard = Netherboard.instance().getBoard(playerr);
@@ -52,8 +53,7 @@ public class Scoreboard implements Listener {
     		if(player != playerr) {
     			BPlayerBoard board = Netherboard.instance().getBoard(playerr);
     	    	
-    			board.set(ChatColor.translateAlternateColorCodes('&', "&cThere are &l" + Bukkit.getOnlinePlayers().size() + " players online."), 3);
-
+    	    	board.set(ChatColor.translateAlternateColorCodes('&', "&cTotal Players: &l" + (Bukkit.getOnlinePlayers().size()-1)), 3);
     		};
     	});
     }
