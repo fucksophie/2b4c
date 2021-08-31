@@ -27,6 +27,11 @@
 			<artifactId>reflections</artifactId>
 			<version>0.9.12</version>
 		</dependency>
+		<dependency>
+  <groupId>fr.minuskube</groupId>
+  <artifactId>netherboard-bukkit</artifactId>
+  <version>1.2.2</version>
+</dependency>
 </dependencies>
   	<build>
 	  <resources>
@@ -48,7 +53,7 @@
 						</goals>
 						
 						<configuration>
-						 	<!--<outputDirectory>D:\MC servers\BasedSMP\plugins</outputDirectory>-->
+						 	<!-- <outputDirectory>D:\MC servers\BasedSMP\plugins</outputDirectory> -->
 							<shadedArtifactAttached>true</shadedArtifactAttached>
 							<shadedClassifierName>2b4c</shadedClassifierName>
 						</configuration>

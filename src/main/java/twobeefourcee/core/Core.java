@@ -16,9 +16,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.reflections.Reflections;
 
 public class Core extends JavaPlugin {
-	public static String success = ChatColor.translateAlternateColorCodes('&', "&8[&a2b4c&8]&7 ");
-	public static String error = ChatColor.translateAlternateColorCodes('&', "&8[&c2b4c&8]&7 ");
-	public static String info = ChatColor.translateAlternateColorCodes('&', "&8[&72b4c&8]&7 ");
+	public static String success = ChatColor.translateAlternateColorCodes('&', "&8[&a&l2b4c&r&8]&7 ");
+	public static String error = ChatColor.translateAlternateColorCodes('&', "&8[&c&l2b4c&r&8]&7 ");
+	public static String info = ChatColor.translateAlternateColorCodes('&', "&8[&7&l2b4c&r&8]&7 ");
 
     private Server mc = Bukkit.getServer();
     private Logger log = this.getLogger();
@@ -51,6 +51,7 @@ public class Core extends JavaPlugin {
 	        	}
 	        }
 		
+	        
 		System.out.println("[2b4cCore] Enabled sucessfully!");
 	}
 	
