@@ -26,7 +26,7 @@ public class Scoreboard implements Listener {
     	    	double days = ((double)player.getStatistic(Statistic.PLAY_ONE_MINUTE)) / 20 / 86400;
     	    	    	    	
     	    	board.set(ChatColor.translateAlternateColorCodes('&', "&cPlaytime: &l" + String.format("%.2f", days) + "d"), 2);
-    	    	board.set(ChatColor.translateAlternateColorCodes('&', "&cOnline: &l" + Bukkit.getOnlinePlayers().size()), 3);
+    	    	board.set(ChatColor.translateAlternateColorCodes('&', "&cTotal Players: &l" + Bukkit.getOnlinePlayers().size()), 3);
     	    	
     	    	board.set("", 1);
     	    	

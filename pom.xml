@@ -53,7 +53,7 @@
 						</goals>
 						
 						<configuration>
-						 	<!-- <outputDirectory>D:\MC servers\BasedSMP\plugins</outputDirectory> -->
+						 	<outputDirectory>D:\MC servers\BasedSMP\plugins</outputDirectory>
 							<shadedArtifactAttached>true</shadedArtifactAttached>
 							<shadedClassifierName>2b4c</shadedClassifierName>
 						</configuration>

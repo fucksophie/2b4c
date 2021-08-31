@@ -14,3 +14,8 @@ commands:
    joindate:
       aliases: ["jd"]
       default: true
+   kill:
+      aliases: ["suicide"]
+      default: true
+   dupe:
+      default: true
