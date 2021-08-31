@@ -17,5 +17,8 @@ commands:
    kill:
       aliases: ["suicide"]
       default: true
+   playtime:
+      aliases: ["pt", "ptime"]
+      default: true
    dupe:
       default: true
