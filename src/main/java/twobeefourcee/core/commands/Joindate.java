@@ -18,14 +18,15 @@ import twobeefourcee.core.Core;
 
 public class Joindate implements CommandExecutor {
 
+	DateTimeFormatter formatter = DateTimeFormatter
+			.ofLocalizedDateTime(FormatStyle.SHORT)
+			.withZone(ZoneId.from(ZoneOffset.UTC));
+	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if(args.length == 1) {
 			Player player = Bukkit.getPlayer(args[0]);
 			if(player != null) {
 				long time = Core.database.getLong(player.getUniqueId().toString() + ".joinDate");
-				DateTimeFormatter formatter = DateTimeFormatter
-						.ofLocalizedDateTime(FormatStyle.SHORT)
-						.withZone(ZoneId.from(ZoneOffset.UTC));
 				
 				sender.sendMessage(Core.success + "Player " + player.getName() + " joined " + formatter.format(Instant.ofEpochSecond(time)));
 			} else {
@@ -34,12 +35,8 @@ public class Joindate implements CommandExecutor {
 		} else {
 			if(sender instanceof Player) {
 				long time = Core.database.getLong(((Player) sender).getUniqueId().toString() + ".joinDate");
-				DateTimeFormatter formatter = DateTimeFormatter
-						.ofLocalizedDateTime(FormatStyle.SHORT)
-						.withZone(ZoneId.from(ZoneOffset.UTC));
 				
 				sender.sendMessage(Core.success + "You joined " + formatter.format(Instant.ofEpochSecond(time)));
-
 			}
 		}
 
