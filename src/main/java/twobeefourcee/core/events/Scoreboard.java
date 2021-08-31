@@ -21,7 +21,7 @@ public class Scoreboard implements Listener {
 
     	Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.getPlugin(Core.class), new Runnable() {
     		public void run() {
-    	    	BPlayerBoard board = Netherboard.instance().createBoard(player, Core.error);
+    	    	BPlayerBoard board = Netherboard.instance().createBoard(player, Core.error.substring(0, Core.error.length() - 1));
     
     	    	double days = ((double)player.getStatistic(Statistic.PLAY_ONE_MINUTE)) / 20 / 86400;
     	    	    	    	
