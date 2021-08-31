@@ -23,9 +23,9 @@ public class Scoreboard implements Listener {
     		public void run() {
     	    	BPlayerBoard board = Netherboard.instance().createBoard(player, Core.error);
     	    	 
-    	    	int seconds = player.getStatistic(Statistic.PLAY_ONE_MINUTE) / 20;
+    	    	double days = player.getStatistic(Statistic.PLAY_ONE_MINUTE) / 20 / 86400;
     	    	
-    	    	board.set(ChatColor.translateAlternateColorCodes('&', "&cPlaytime:" + seconds%86400/3600 + "d"), 2);
+    	    	board.set(ChatColor.translateAlternateColorCodes('&', "&cPlaytime: &l" + String.format("%.2f", days) + "d"), 2);
     	    	board.set(ChatColor.translateAlternateColorCodes('&', "&cTotal Players: &l" + Bukkit.getOnlinePlayers().size()), 3);
     	    	
     	    	board.set("", 1);
