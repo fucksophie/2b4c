@@ -11,9 +11,12 @@ import org.bukkit.Server;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.reflections.Reflections;
+
+import twobeefourcee.core.events.Scoreboard;
 
 public class Core extends JavaPlugin {
 	public static String success = ChatColor.translateAlternateColorCodes('&', "&8[&a&l2b4c&r&8]&7 ");
@@ -51,7 +54,10 @@ public class Core extends JavaPlugin {
 	        	}
 	        }
 		
-	        
+	    Bukkit.getOnlinePlayers().forEach(playerr -> {
+	    	Scoreboard.joinEvent(new PlayerJoinEvent(playerr, null));
+	    });
+	    
 		System.out.println("[2b4cCore] Enabled sucessfully!");
 	}
 	
