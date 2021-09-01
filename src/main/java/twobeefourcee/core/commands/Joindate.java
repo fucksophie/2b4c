@@ -38,7 +38,7 @@ public class Joindate implements CommandExecutor {
 				
 				sender.sendMessage(Core.success + "You joined " + formatter.format(Instant.ofEpochSecond(time)));
 			}
-		}
+	}
 
 		return true;
 	}
