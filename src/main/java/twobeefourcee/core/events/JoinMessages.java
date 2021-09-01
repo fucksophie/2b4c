@@ -14,9 +14,11 @@ import twobeefourcee.core.Core;
 public class JoinMessages implements Listener {
 	
     @EventHandler
-    public void joinEvent(PlayerJoinEvent event) {
+    static public void joinEvent(PlayerJoinEvent event) {
     	Player player = event.getPlayer();
-
+    	
+    	Boolean refreshed = event.getJoinMessage() == null;
+    	
     	if(Core.database.getLong(player.getUniqueId().toString() + ".joinDate") == 0) {
     		Bukkit.broadcastMessage(Core.info + player.getName() + " joined for the first time.");
     		long unixTime = System.currentTimeMillis() / 1000L; // Using this as a long protects against Y38.
@@ -28,17 +30,21 @@ public class JoinMessages implements Listener {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		} else {
-		    
+		} else {    
 	    	event.setJoinMessage(Core.success + player.getName() + " joined.");
-	    	
 		}
+
+    	if(refreshed) {
+        	Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.getPlugin(Core.class), new Runnable() {
+        		public void run() {
+            		Bukkit.broadcastMessage(event.getJoinMessage());
+        		}
+        	}, 20);
+    	}
     }
     
     @EventHandler
     public void leaveEvent(PlayerQuitEvent event) {
-    	Player player = event.getPlayer();
-    	
-    	event.setQuitMessage(Core.error + player.getName() + " left.");
+    	event.setQuitMessage(Core.error + event.getPlayer().getName() + " left.");
     }
 }

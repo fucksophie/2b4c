@@ -1,4 +1,3 @@
-
 package twobeefourcee.core;
 
 import java.io.File;
@@ -16,6 +15,8 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.reflections.Reflections;
 
+import twobeefourcee.core.events.JoinMessages;
+import twobeefourcee.core.events.PlaytimeBenefits;
 import twobeefourcee.core.events.Scoreboard;
 
 public class Core extends JavaPlugin {
@@ -56,6 +57,8 @@ public class Core extends JavaPlugin {
 		
 	    Bukkit.getOnlinePlayers().forEach(playerr -> {
 	    	Scoreboard.joinEvent(new PlayerJoinEvent(playerr, null));
+	    	JoinMessages.joinEvent(new PlayerJoinEvent(playerr, null));
+	    	PlaytimeBenefits.joinEvent(new PlayerJoinEvent(playerr, null));
 	    });
 	    
 		System.out.println("[2b4cCore] Enabled sucessfully!");
