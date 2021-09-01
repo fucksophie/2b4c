@@ -35,7 +35,7 @@ public class PlaytimeBenefits implements Listener {
     }
     
     static public void setColor(Player player, String color) {
-    	player.setDisplayName(ChatColor.translateAlternateColorCodes('&', color+ player.getName()));
+    	player.setDisplayName(ChatColor.translateAlternateColorCodes('&', color + player.getName() + "&r"));
     	player.setPlayerListName(ChatColor.translateAlternateColorCodes('&', player.getDisplayName()));
     }
 }
