@@ -31,29 +31,40 @@ public class Core extends JavaPlugin {
     public static File databaseFile = new File("plugins/2b4cCore/db.yml");
     public static YamlConfiguration database = YamlConfiguration.loadConfiguration(databaseFile);
     
+    private static String[] annoucments = new String[] {
+    		"Join the official 2b4c discord at: discord.gg/zXyQ7WsyJp for free kits and more!",
+    		"Tip: The 11/11 dupe is enabled. View /dupehelp.",
+    		"Crashing the server is &lstrictly forbidden.",
+    		"Stuck? Type /kill to meet your tragic fate.",
+    		"Find your total playtime with /pt",
+    		"https://www.change.org/p/novo-nordisk-stop-the-insulin-price-hikes",
+    };
+    
+    private static int annoucmentLocation = 0;
+    
 	@Override
 	public void onEnable() {
 		Reflections commandReflections = new Reflections("twobeefourcee.core.commands");
 		Reflections listenerReflections = new Reflections("twobeefourcee.core.events");
 		
-		 for (Class <? extends CommandExecutor> command : commandReflections.getSubTypesOf(CommandExecutor.class)) {
-			 try {
-				this.getCommand(command.getSimpleName().toLowerCase()).setExecutor(command.getDeclaredConstructor().newInstance());
-				log.info("Registered command " + command.getSimpleName());
-			 } catch (InstantiationException | IllegalAccessException | IllegalArgumentException
-					| InvocationTargetException | NoSuchMethodException | SecurityException e) {
+	    for (Class <? extends CommandExecutor> command : commandReflections.getSubTypesOf(CommandExecutor.class)) {
+		    try {
+			    this.getCommand(command.getSimpleName().toLowerCase()).setExecutor(command.getDeclaredConstructor().newInstance());
+			    log.info("Registered command " + command.getSimpleName());
+			} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
+			    	   | InvocationTargetException | NoSuchMethodException | SecurityException e) {
 				e.printStackTrace();
 			};
-		 }
+		}
 		 
-	        for (Class <? extends Listener> listener : listenerReflections.getSubTypesOf(Listener.class)) {
-	        	try {
-	        		pm.registerEvents(listener.getDeclaredConstructor().newInstance(), this);
-	        		log.info("Registered event " + listener.getSimpleName());
-	        	} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
-	        		e.printStackTrace();
-	        	}
-	        }
+		for (Class <? extends Listener> listener : listenerReflections.getSubTypesOf(Listener.class)) {
+		    try {
+			    pm.registerEvents(listener.getDeclaredConstructor().newInstance(), this);
+			    log.info("Registered event " + listener.getSimpleName());
+			} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
+				e.printStackTrace();
+		    }
+	    }
 		
 	    Bukkit.getOnlinePlayers().forEach(playerr -> {
 	    	Scoreboard.joinEvent(new PlayerJoinEvent(playerr, null));
@@ -61,6 +72,18 @@ public class Core extends JavaPlugin {
 	    	PlaytimeBenefits.joinEvent(new PlayerJoinEvent(playerr, null));
 	    });
 	    
+	    
+	    Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
+	        public void run() { 
+	        	annoucmentLocation++;
+	        	
+	        	if(annoucmentLocation == Core.annoucments.length)
+	        		annoucmentLocation = 0;
+	        	
+	        	Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', Core.success + Core.annoucments[annoucmentLocation]));
+	        }
+	    }, (20 * 60) * 2, (20 * 60) * 2);
+	        
 		System.out.println("[2b4cCore] Enabled sucessfully!");
 	}
 	

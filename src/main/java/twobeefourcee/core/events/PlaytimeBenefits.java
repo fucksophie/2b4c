@@ -14,23 +14,23 @@ public class PlaytimeBenefits implements Listener {
     static public void joinEvent(PlayerJoinEvent event) {
     	Player player = event.getPlayer();
     	double time = ((double)player.getStatistic(Statistic.PLAY_ONE_MINUTE)) / 20;
-
+    	
     	if(time >= 259200) {
-    		setColor(player, "&a&l");
+    		setColor(player, "&c❤&r ");
     	} else if(time >= 216000) {
-    		setColor(player, "&c&l");
+    		setColor(player, "█ ");
     	} else if(time >= 172800) {
-    		setColor(player, "&c");
+    		setColor(player, "▆ ");
     	} else if(time >= 129600) {
-    		setColor(player, "&4");
+    		setColor(player, "▅ ");
     	} else if(time >= 86400) {
-    		setColor(player, "&a");
+    		setColor(player, "▄ ");
     	} else if(time >= 600) {
-    		setColor(player, "&2");
+    		setColor(player, "▃ ");
     	} else if(time >= 300) {
-    		setColor(player, "&7");
+    		setColor(player, "▂ ");
     	} else if(time >= 60) {
-    		setColor(player, "&8");
+    		setColor(player, "▁ ");
     	}
     }
     

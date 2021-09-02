@@ -21,10 +21,12 @@ public class JoinMessages implements Listener {
     	
     	if(Core.database.getLong(player.getUniqueId().toString() + ".joinDate") == 0) {
     		Bukkit.broadcastMessage(Core.info + player.getName() + " joined for the first time.");
+    		
+    		player.sendMessage(Core.success + "Welcome to 2b4c, hacks are allowed and there are &lno rules!");
     		long unixTime = System.currentTimeMillis() / 1000L; // Using this as a long protects against Y38.
     		
     		Core.database.set(player.getUniqueId().toString() + ".joinDate", unixTime);
-		
+    		
 			try {
 				Core.database.save(Core.databaseFile);
 			} catch (IOException e) {
@@ -32,6 +34,7 @@ public class JoinMessages implements Listener {
 			}
 		} else {    
 	    	event.setJoinMessage(Core.success + player.getName() + " joined.");
+	    	player.sendMessage(Core.success + "Welcome back " + player.getName() + "!");
 		}
 
     	if(refreshed) {
