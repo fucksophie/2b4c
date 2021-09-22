@@ -7,8 +7,10 @@ import java.util.logging.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
+import org.bukkit.World;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Wither;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.PluginManager;
@@ -32,12 +34,12 @@ public class Core extends JavaPlugin {
     public static YamlConfiguration database = YamlConfiguration.loadConfiguration(databaseFile);
     
     private static String[] annoucments = new String[] {
-    		"Join the official 2b4c discord at: discord.gg/zXyQ7WsyJp for free kits and more!",
-    		"Tip: The 11/11 dupe is enabled. View /dupehelp.",
+    		"Join the official 2b4c discord at: discord.gg/zXyQ7WsyJp",
     		"Crashing the server is &lstrictly forbidden.",
     		"Stuck? Type /kill to meet your tragic fate.",
-    		"Find your total playtime with /pt",
-    		"https://www.change.org/p/novo-nordisk-stop-the-insulin-price-hikes",
+    		"Track your total playtime with /pt",
+    		"Reminder: Keep inventory is &lnot enabled.",
+    		"Tip: Try not to die."
     };
     
     private static int annoucmentLocation = 0;
@@ -83,7 +85,14 @@ public class Core extends JavaPlugin {
 	        	Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', Core.success + Core.annoucments[annoucmentLocation]));
 	        }
 	    }, (20 * 60) * 2, (20 * 60) * 2);
-	        
+	    Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
+	        public void run() { 
+	        	World w = mc.getWorlds().get(0);
+	        	w.getEntitiesByClass(Wither.class).forEach(m -> {
+	        		m.setHealth(0);
+	        	});
+	        }
+	    }, 20 *300,20 *300);
 		System.out.println("[2b4cCore] Enabled sucessfully!");
 	}
 	
